@@ -1,8 +1,5 @@
 import { initializeApp } from 'firebase/app';
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-// Your web app's Firebase configuration
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -13,5 +10,6 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_APP_ID,
 };
 
-// eslint-disable-next-line
 const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export default app;
