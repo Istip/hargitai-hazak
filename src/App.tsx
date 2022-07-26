@@ -1,7 +1,7 @@
 const App: React.FC = () => {
   return (
-    <div>
-      <h1>New app for learning TS</h1>
+    <div className="app">
+      <h1>Hello TS</h1>
     </div>
   );
 };
