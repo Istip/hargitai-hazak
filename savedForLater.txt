@@ -1,0 +1,37 @@
+// Fetching the necessary houses for the Home component
+  useEffect(() => {
+    const fetch = async () => {
+      const querySnapshot = await getDocs(collection(db, 'houses'));
+      const houses: House[] = [];
+      querySnapshot.forEach((doc) => {
+        return houses.push({
+          id: doc.id,
+          adress: doc.data().adress,
+          name: doc.data().name,
+        });
+      });
+    };
+
+    fetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+// Adding a new House to the DB and to global state
+  const addHouse = async () => {
+    try {
+      const docRef = await addDoc(collection(db, 'houses'), {
+        name: 'Okland',
+        adress: 'Boznya utca 68',
+      });
+
+      dispatch(
+        createHouse({
+          id: docRef.id,
+          name: 'Okland',
+          adress: 'Boznya utca 68',
+        })
+      );
+    } catch (e) {
+      console.error('Error adding document: ', e);
+    }
+  };
