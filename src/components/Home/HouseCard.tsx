@@ -1,11 +1,7 @@
 import { Link } from 'react-router-dom';
 import { House } from '../../features/houses/houseSlice';
 
-interface IProps {
-  house: House;
-}
-
-const HouseCard: React.FC<IProps> = ({ house }) => {
+const HouseCard: React.FC<{ house: House }> = ({ house }) => {
   return (
     <Link to={`/houses/${house.id}`} style={{ all: 'unset' }}>
       <li>

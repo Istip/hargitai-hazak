@@ -55,6 +55,7 @@ export const houseSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // Get all the houses
     builder.addCase(getHouses.pending, (state) => {
       state.isLoading = true;
     });
