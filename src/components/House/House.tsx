@@ -45,7 +45,9 @@ const House = () => {
   return (
     <div style={{ padding: 20 }}>
       {loading || !houseData ? (
-        <div>Loading...</div>
+        <div>
+          <h3>Loading...</h3>
+        </div>
       ) : (
         <div>
           <Link to="/">Back to houses</Link>
