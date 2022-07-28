@@ -7,14 +7,13 @@ const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useAppSelector((state) => state.user);
 
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        navigate('/');
-      })
-      .catch((error) => {
-        console.log('error', error);
-      });
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/');
+    } catch (error) {
+      console.log('error', error);
+    }
   };
 
   return (
