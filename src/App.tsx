@@ -18,8 +18,6 @@ const App: React.FC = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log('user from app: ', user);
-
         const data = {
           uid: user.uid,
           displayName: user.displayName,

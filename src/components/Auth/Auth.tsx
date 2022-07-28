@@ -18,7 +18,6 @@ const Auth: React.FC = () => {
 
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result);
         navigate('/');
       })
       .catch((error) => {
