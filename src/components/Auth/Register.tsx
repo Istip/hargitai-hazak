@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import { useState } from 'react';
-import { auth } from '../../firebase';
+import { auth, db } from '../../firebase';
 
 interface FormData {
   name: string;
@@ -32,9 +33,17 @@ const Register: React.FC = () => {
     }
 
     createUserWithEmailAndPassword(auth, email, password)
-      .then((response) => {
+      .then(async (response) => {
         const user = response.user;
-        console.log('Registered user: ', user);
+
+        const data = {
+          uid: user.uid,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+          email: user.email,
+        };
+        await setDoc(doc(db, 'users', user.uid), data);
+
         setFormData(initialState);
       })
       .catch((error) => {

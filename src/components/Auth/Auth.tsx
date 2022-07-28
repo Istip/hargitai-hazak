@@ -1,7 +1,8 @@
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useState } from 'react';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../../firebase';
+import { auth, db } from '../../firebase';
 import Login from './Login';
 import Register from './Register';
 
@@ -17,7 +18,19 @@ const Auth: React.FC = () => {
     const provider = new GoogleAuthProvider();
 
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (response) => {
+        const user = response.user;
+
+        const data = {
+          uid: user.uid,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+          email: user.email,
+        };
+        const docRef = doc(db, 'users', user.uid);
+        const merge = { merge: true };
+        await setDoc(docRef, data, merge);
+
         navigate('/');
       })
       .catch((error) => {
