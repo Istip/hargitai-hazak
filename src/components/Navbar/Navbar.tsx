@@ -32,9 +32,12 @@ const Navbar: React.FC = () => {
       <div>
         <Link to="/">Home</Link>
         <span style={{ marginRight: '5px' }} />
-        <Link to="/auth">Login</Link>
-        <span style={{ marginRight: '5px' }} />
-        {user && <button onClick={handleLogout}>LOGOUT</button>}
+
+        {user ? (
+          <button onClick={handleLogout}>LOGOUT</button>
+        ) : (
+          <Link to="/auth">Login</Link>
+        )}
       </div>
     </div>
   );

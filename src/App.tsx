@@ -1,17 +1,25 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 import { Auth, Home, Navbar, House, NotFound } from './components/';
 import { setUser } from './features/user/userSlice';
 import { auth } from './firebase';
-import { useAppDispatch } from './hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from './hooks/reduxHooks';
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.user);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        console.log('user from app: ', user);
+
         const data = {
           uid: user.uid,
           displayName: user.displayName,
@@ -30,7 +38,10 @@ const App: React.FC = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/auth" element={<Auth />} />
+        <Route
+          path="/auth"
+          element={!user ? <Auth /> : <Navigate replace to="/" />}
+        />
         <Route path="/houses/:id" element={<House />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
