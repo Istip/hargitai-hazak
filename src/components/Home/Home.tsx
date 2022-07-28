@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getHouses } from '../../features/houses/houseSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import HouseCard from './HouseCard';
@@ -40,6 +41,8 @@ const Home: React.FC = () => {
           ))}
         </ul>
       )}
+
+      <Link to="/profile">GO TO PROFILE »</Link>
     </div>
   );
 };

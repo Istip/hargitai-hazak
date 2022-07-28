@@ -24,7 +24,7 @@ const Auth: React.FC = () => {
         const data = {
           uid: user.uid,
           displayName: user.displayName,
-          photoURL: user.photoURL,
+          photoUrl: user.photoURL,
           email: user.email,
         };
         const docRef = doc(db, 'users', user.uid);

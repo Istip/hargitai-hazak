@@ -6,7 +6,7 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
-import { Auth, Home, Navbar, House, NotFound } from './components/';
+import { Auth, Home, Navbar, House, NotFound, Profile } from './components/';
 import { setUser } from './features/user/userSlice';
 import { auth } from './firebase';
 import { useAppDispatch, useAppSelector } from './hooks/reduxHooks';
@@ -38,9 +38,13 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route
           path="/auth"
-          element={!user ? <Auth /> : <Navigate replace to="/" />}
+          element={user ? <Navigate replace to="/" /> : <Auth />}
         />
         <Route path="/houses/:id" element={<House />} />
+        <Route
+          path="/profile"
+          element={user ? <Profile /> : <Navigate replace to="/" />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

@@ -39,7 +39,7 @@ const Register: React.FC = () => {
         const data = {
           uid: user.uid,
           displayName: user.displayName,
-          photoURL: user.photoURL,
+          photoUrl: user.photoURL,
           email: user.email,
         };
         await setDoc(doc(db, 'users', user.uid), data);

@@ -1,11 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// TODO: define User interface
-
 export interface User {
   readonly uid: string;
   displayName?: string;
-  photoURL?: string;
+  photoUrl?: string;
   email: string;
 }
 
@@ -26,9 +24,6 @@ export const userSlice = createSlice({
     },
   },
 });
-
-// Selector
-export const selectUser = (state: UserState) => state.user;
 
 export const { setUser } = userSlice.actions;
 export default userSlice.reducer;
