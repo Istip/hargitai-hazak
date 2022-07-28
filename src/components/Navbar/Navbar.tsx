@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
       <div>
         <Link to="/">Home</Link>
         <span style={{ marginRight: '5px' }} />
-        <Link to="/login">Login</Link>
+        <Link to="/auth">Login</Link>
       </div>
     </div>
   );

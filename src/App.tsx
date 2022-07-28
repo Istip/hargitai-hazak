@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Login, Home, Navbar, House, NotFound } from './components/';
+import { Auth, Home, Navbar, House, NotFound } from './components/';
 
 const App: React.FC = () => {
   return (
@@ -7,7 +7,7 @@ const App: React.FC = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/auth" element={<Auth />} />
         <Route path="/houses/:id" element={<House />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

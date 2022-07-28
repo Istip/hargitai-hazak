@@ -3,10 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 // TODO: define User interface
 
 interface User {
-  readonly name: string;
-  readonly uid: string;
-  readonly email: string;
-  readonly displayName: string;
+  name: string;
+  uid: string;
+  email: string;
+  displayName: string;
 }
 
 interface UserState {
