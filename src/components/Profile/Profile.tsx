@@ -1,5 +1,6 @@
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { Mail, User } from 'react-feather';
+import NewHouse from './NewHouse';
 
 const Profile: React.FC = () => {
   const { user } = useAppSelector((state) => state.user);
@@ -33,6 +34,8 @@ const Profile: React.FC = () => {
         <Mail />
         {user?.email}
       </p>
+
+      <NewHouse />
     </div>
   );
 };

@@ -19,3 +19,7 @@ h3 {
   letter-spacing: -0.7px;
   font-weight: 700;
 }
+
+.center {
+  text-align: center;
+}

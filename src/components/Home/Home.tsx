@@ -25,8 +25,7 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <h2>Houses</h2>
-      <p>Main page, will be visible by every visitor!</p>
+      <h2 className="center">Houses</h2>
 
       <br />
 
@@ -42,7 +41,9 @@ const Home: React.FC = () => {
         </ul>
       )}
 
-      <Link to="/profile">GO TO PROFILE »</Link>
+      <div className="center">
+        <Link to="/profile">GO TO PROFILE »</Link>
+      </div>
     </div>
   );
 };
