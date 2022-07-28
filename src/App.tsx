@@ -1,7 +1,30 @@
+import { onAuthStateChanged } from 'firebase/auth';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Auth, Home, Navbar, House, NotFound } from './components/';
+import { setUser } from './features/user/userSlice';
+import { auth } from './firebase';
+import { useAppDispatch } from './hooks/reduxHooks';
 
 const App: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const data = {
+          uid: user.uid,
+          displayName: user.displayName,
+          email: user.email,
+          photoUrl: user.photoURL,
+        };
+        dispatch(setUser(data));
+      } else {
+        dispatch(setUser(null));
+      }
+    });
+  }, [dispatch]);
+
   return (
     <Router>
       <Navbar />

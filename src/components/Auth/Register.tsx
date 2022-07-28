@@ -31,11 +31,6 @@ const Register: React.FC = () => {
       return alert('Passwords do not match');
     }
 
-    setFormData(initialState);
-    handleRegister();
-  };
-
-  const handleRegister = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((response) => {
         const user = response.user;

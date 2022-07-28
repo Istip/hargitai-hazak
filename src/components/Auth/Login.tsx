@@ -1,4 +1,6 @@
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
+import { auth } from '../../firebase';
 
 interface FormData {
   email: string;
@@ -20,8 +22,18 @@ const Login: React.FC = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
-    setFormData(initialState);
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log('Singed in user: ', user);
+        setFormData(initialState);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log('An error occured: ', errorCode, errorMessage);
+      });
   };
 
   return (

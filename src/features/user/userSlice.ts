@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // TODO: define User interface
 
-interface User {
-  name: string;
-  uid: string;
+export interface User {
+  readonly uid: string;
+  displayName?: string;
+  photoURL?: string;
   email: string;
-  displayName: string;
 }
 
 interface UserState {
@@ -21,11 +21,8 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    login: (state, action) => {
+    setUser: (state, action) => {
       state.user = action.payload;
-    },
-    logout: (state) => {
-      state.user = null;
     },
   },
 });
@@ -33,5 +30,5 @@ export const userSlice = createSlice({
 // Selector
 export const selectUser = (state: UserState) => state.user;
 
-export const { login, logout } = userSlice.actions;
+export const { setUser } = userSlice.actions;
 export default userSlice.reducer;

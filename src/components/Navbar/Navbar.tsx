@@ -1,6 +1,22 @@
-import { Link } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../../firebase';
+import { useAppSelector } from '../../hooks/reduxHooks';
 
 const Navbar: React.FC = () => {
+  const navigate = useNavigate();
+  const { user } = useAppSelector((state) => state.user);
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
+  };
+
   return (
     <div
       style={{
@@ -18,6 +34,8 @@ const Navbar: React.FC = () => {
         <Link to="/">Home</Link>
         <span style={{ marginRight: '5px' }} />
         <Link to="/auth">Login</Link>
+        <span style={{ marginRight: '5px' }} />
+        {user && <button onClick={handleLogout}>LOGOUT</button>}
       </div>
     </div>
   );
