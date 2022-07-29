@@ -39,12 +39,6 @@ const Navbar: React.FC = () => {
         ) : (
           <Link to="/auth">Login</Link>
         )}
-
-        <Box>
-          <Text as="h3" fontWeight="black" color="primary.500">
-            HELLOKA
-          </Text>
-        </Box>
       </Box>
     </div>
   );

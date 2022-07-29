@@ -18,7 +18,6 @@ interface ContainerProps {
   m?: number | string;
 }
 const Container = styled.div<ContainerProps>`
-  border: 1px solid red;
   padding: ${({ p }) => (typeof p === 'number' ? `${p}px` : `${p}`)};
   margin: ${({ m }) => (typeof m === 'number' ? `${m}px` : `${m}`)};
 `;
