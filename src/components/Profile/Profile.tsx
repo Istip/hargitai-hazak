@@ -1,5 +1,4 @@
 import { useAppSelector } from '../../hooks/reduxHooks';
-import { Mail, User } from 'react-feather';
 import NewHouse from './NewHouse';
 
 const Profile: React.FC = () => {
@@ -21,7 +20,6 @@ const Profile: React.FC = () => {
           gap: 5,
         }}
       >
-        <User />
         {user?.displayName}
       </h3>
       <p
@@ -31,7 +29,6 @@ const Profile: React.FC = () => {
           gap: 5,
         }}
       >
-        <Mail />
         {user?.email}
       </p>
 

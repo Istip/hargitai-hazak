@@ -1,7 +1,9 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { useState } from 'react';
+import { setUser } from '../../features/user/userSlice';
 import { auth, db } from '../../firebase';
+import { useAppDispatch } from '../../hooks/reduxHooks';
 
 interface FormData {
   name: string;
@@ -20,6 +22,7 @@ const Register: React.FC = () => {
 
   const [formData, setFormData] = useState(initialState);
   const { name, email, password, passwordConfirm } = formData;
+  const dispatch = useAppDispatch();
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -41,8 +44,12 @@ const Register: React.FC = () => {
           displayName: user.displayName,
           photoUrl: user.photoURL,
           email: user.email,
+          admin: false,
+          createdAt: Date.now(),
+          houses: 0,
         };
         await setDoc(doc(db, 'users', user.uid), data);
+        dispatch(setUser(data));
 
         setFormData(initialState);
       })

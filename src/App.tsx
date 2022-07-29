@@ -1,4 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
 import { useEffect } from 'react';
 import {
   BrowserRouter as Router,
@@ -8,7 +9,7 @@ import {
 } from 'react-router-dom';
 import { Auth, Home, Navbar, House, NotFound, Profile } from './components/';
 import { setUser } from './features/user/userSlice';
-import { auth } from './firebase';
+import { auth, db } from './firebase';
 import { useAppDispatch, useAppSelector } from './hooks/reduxHooks';
 
 const App: React.FC = () => {
@@ -16,18 +17,23 @@ const App: React.FC = () => {
   const { user } = useAppSelector((state) => state.user);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       if (user) {
+        const userRef = await getDoc(doc(db, 'users', user.uid));
+        const response = userRef.data();
         const data = {
           uid: user.uid,
           displayName: user.displayName,
           email: user.email,
           photoUrl: user.photoURL,
+          admin: response!.admin,
+          createdAt: response!.createdAt,
+          houses: response!.houses,
         };
-        dispatch(setUser(data));
-      } else {
-        dispatch(setUser(null));
+        return dispatch(setUser(data));
       }
+
+      dispatch(setUser(null));
     });
   }, [dispatch]);
 
