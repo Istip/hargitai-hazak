@@ -1,29 +1,10 @@
 import { colors } from './tokens';
 import styled from 'styled-components';
+import { ColorTypes } from '../types/ColorTypes';
 
 interface OwnProps<E extends React.ElementType> {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'h1' | 'h2' | 'h3';
-  color?:
-    | 'white'
-    | 'black'
-    | 'gray.light'
-    | 'gray.muted'
-    | 'gray.medium'
-    | 'gray.dark'
-    | 'gray.veryDark'
-    | 'primary'
-    | 'primary.100'
-    | 'primary.200'
-    | 'primary.300'
-    | 'primary.400'
-    | 'primary.500'
-    | 'primary.600'
-    | 'primary.700'
-    | 'primary.800'
-    | 'primary.900'
-    | 'error'
-    | 'success'
-    | 'warning';
+  color?: ColorTypes;
   fontWeight?: 'light' | 'normal' | 'bold' | 'black';
   center?: boolean;
 

@@ -6,7 +6,7 @@ export const colors = {
   warning: '#ffc04d',
   primary: '#47bbde',
 
-  'primary.100': '#f6fcfd',
+  'primary.100': '#eef9fc',
   'primary.200': '#d7f0f8',
   'primary.300': '#a7deef',
   'primary.400': '#77cde7',
