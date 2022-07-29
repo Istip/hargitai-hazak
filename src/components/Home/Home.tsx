@@ -41,9 +41,10 @@ const Home: React.FC = () => {
           ))}
         </ul>
       )}
-      <div className="center">
+
+      <Text center>
         <Link to="/profile">GO TO PROFILE »</Link>
-      </div>
+      </Text>
     </div>
   );
 };
