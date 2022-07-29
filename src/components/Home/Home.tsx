@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getHouses } from '../../features/houses/houseSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { Text } from '../../UI';
 import HouseCard from './HouseCard';
 
 const Home: React.FC = () => {
@@ -25,9 +26,9 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <h2 className="center">Houses</h2>
-
-      <br />
+      <Text as="h2" size="h2" fontWeight="bold" center>
+        Houses
+      </Text>
 
       {isLoading ? (
         <div>
@@ -40,7 +41,6 @@ const Home: React.FC = () => {
           ))}
         </ul>
       )}
-
       <div className="center">
         <Link to="/profile">GO TO PROFILE »</Link>
       </div>

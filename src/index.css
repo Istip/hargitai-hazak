@@ -5,21 +5,9 @@
   margin: 0;
   box-sizing: border-box;
   letter-spacing: -0.5px;
-  /* text-align: center; */
 }
 
-h1 {
-  font-size: 3rem;
-  letter-spacing: -0.7px;
-  font-weight: 700;
-}
-
-h2,
-h3 {
-  letter-spacing: -0.7px;
-  font-weight: 700;
-}
-
-.center {
-  text-align: center;
+a {
+  all: unset;
+  text-decoration: none;
 }
