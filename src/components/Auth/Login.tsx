@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { auth } from '../../firebase';
-import { Input } from '../../UI';
+import { Box, Button, Input, Text } from '../../UI';
 
 interface FormData {
   email: string;
@@ -38,8 +38,10 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <Box>
+      <Text as="h2" size="h2" fontWeight="bold" center>
+        Login
+      </Text>
 
       <form
         onSubmit={onSubmit}
@@ -47,6 +49,7 @@ const Login: React.FC = () => {
           display: 'flex',
           flexDirection: 'column',
           gap: '10px',
+          marginTop: '10px',
         }}
       >
         <Input
@@ -66,9 +69,17 @@ const Login: React.FC = () => {
           onChange={onChange}
           required
         />
-        <button type="submit">LOGIN</button>
+        <Button
+          size="medium"
+          w="100%"
+          justifyContent="center"
+          type="submit"
+          variant="primary"
+        >
+          LOGIN
+        </Button>
       </form>
-    </div>
+    </Box>
   );
 };
 

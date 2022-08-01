@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 import { colors } from './tokens';
 
-interface InputProps
+interface Props
   extends React.PropsWithChildren<
     React.InputHTMLAttributes<HTMLInputElement>
   > {}
 
-const Input: React.FC<InputProps> = (props) => {
+const Input: React.FC<Props> = (props) => {
   return <InputField {...props} />;
 };
 
 export default Input;
 
-const InputField = styled.input`
+const InputField = styled.input<Props>`
   padding: 12px 18px;
   border: 1px solid ${colors.primary200};
   background: ${colors.white};

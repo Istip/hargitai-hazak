@@ -23,8 +23,8 @@ const Flex: React.FC<Props> = (props) => {
 
 export default Flex;
 
-const Container = styled.div<Omit<Props, 'children'>>`
-  width: ${({ w }) => (typeof w === 'number' ? `${w}px` : `${w}`)};
+const Container = styled.div<Props>`
+  width: ${({ w }) => (typeof w === 'number' ? `${w}px` : `${w}` || '100%')};
   height: ${({ h }) => (typeof h === 'number' ? `${h}px` : `${h}`)};
   padding: ${({ p }) => (typeof p === 'number' ? `${p}px` : `${p}`)};
   margin: ${({ m }) => (typeof m === 'number' ? `${m}px` : `${m}`)};

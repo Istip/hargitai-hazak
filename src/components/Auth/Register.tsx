@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { setUser } from '../../features/user/userSlice';
 import { auth, db } from '../../firebase';
 import { useAppDispatch } from '../../hooks/reduxHooks';
+import { Box, Button, Input, Text } from '../../UI';
 
 interface FormData {
   name: string;
@@ -61,11 +62,21 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
+    <Box>
+      <Text as="h2" size="h2" fontWeight="bold" center>
+        Login
+      </Text>
 
-      <form onSubmit={onSubmit}>
-        <input
+      <form
+        onSubmit={onSubmit}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
+          marginTop: '10px',
+        }}
+      >
+        <Input
           placeholder="Enter your name..."
           type="text"
           name="name"
@@ -73,7 +84,7 @@ const Register: React.FC = () => {
           onChange={onChange}
           required
         />
-        <input
+        <Input
           placeholder="Enter email address..."
           type="email"
           name="email"
@@ -81,7 +92,7 @@ const Register: React.FC = () => {
           onChange={onChange}
           required
         />
-        <input
+        <Input
           placeholder="Enter password..."
           type="password"
           name="password"
@@ -89,7 +100,7 @@ const Register: React.FC = () => {
           onChange={onChange}
           required
         />
-        <input
+        <Input
           placeholder="Confirm password..."
           type="password"
           name="passwordConfirm"
@@ -97,9 +108,17 @@ const Register: React.FC = () => {
           onChange={onChange}
           required
         />
-        <button type="submit">Register</button>
+        <Button
+          size="medium"
+          w="100%"
+          justifyContent="center"
+          type="submit"
+          variant="primary"
+        >
+          Register
+        </Button>
       </form>
-    </div>
+    </Box>
   );
 };
 

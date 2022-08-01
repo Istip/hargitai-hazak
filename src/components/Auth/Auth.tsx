@@ -8,7 +8,7 @@ import { setUser } from '../../features/user/userSlice';
 import { AiFillGoogleCircle } from 'react-icons/ai';
 import Login from './Login';
 import Register from './Register';
-import { Flex } from '../../UI';
+import { Box, Button, Flex, Text } from '../../UI';
 
 const Auth: React.FC = () => {
   const [authType, setAuthType] = useState<'login' | 'register'>('login');
@@ -26,7 +26,6 @@ const Auth: React.FC = () => {
     signInWithPopup(auth, provider)
       .then(async (response) => {
         const user = response.user;
-
         const data = {
           uid: user.uid,
           displayName: user.displayName,
@@ -53,25 +52,38 @@ const Auth: React.FC = () => {
     <Flex p={20} direction="column" gap={5}>
       {authType === 'login' ? <Login /> : <Register />}
 
-      <br />
-      <button onClick={onChange}>
-        Change to {authType === 'login' ? 'Register' : 'Login'}
-      </button>
+      <Flex m="5px 0 0">
+        <Box h={1} bg="primary200" m={'10px 20px'} w="100%" />
+        <Box>
+          <Text size="sm" color="primary400">
+            OR
+          </Text>
+        </Box>
+        <Box h={1} bg="primary200" m={'10px 20px'} w="100%" />
+      </Flex>
 
-      <br />
-      <hr />
-      <br />
-      <button
-        onClick={handleGoogleAuth}
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 5,
-          padding: '10px 20px',
-        }}
-      >
-        <AiFillGoogleCircle size={24} /> Continue
-      </button>
+      <Box m="10px 0">
+        <Button
+          onClick={handleGoogleAuth}
+          // variant="primary"
+          justifyContent="center"
+          icon={<AiFillGoogleCircle size={16} />}
+          w="100%"
+        >
+          Authenticate with Google
+        </Button>
+      </Box>
+
+      <Box>
+        <Button
+          onClick={onChange}
+          variant="secondary"
+          justifyContent="center"
+          w="100%"
+        >
+          Change to {authType === 'login' ? 'Register' : 'Login'}
+        </Button>
+      </Box>
     </Flex>
   );
 };

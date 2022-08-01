@@ -19,7 +19,7 @@ const Box: React.FC<Props> = (props) => {
 
 export default Box;
 
-const Container = styled.div<Omit<Props, 'children'>>`
+const Container = styled.div<Props>`
   width: ${({ w }) => (typeof w === 'number' ? `${w}px` : `${w}`)};
   height: ${({ h }) => (typeof h === 'number' ? `${h}px` : `${h}`)};
   padding: ${({ p }) => (typeof p === 'number' ? `${p}px` : `${p}`)};
