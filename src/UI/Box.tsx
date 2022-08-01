@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { ColorTypes } from '../types/ColorTypes';
 import { colors } from './tokens';
 
-interface Props {
+interface Props
+  extends React.PropsWithChildren<React.InputHTMLAttributes<HTMLDivElement>> {
   children: React.ReactNode;
 
   w?: number | string;

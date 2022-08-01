@@ -8,6 +8,7 @@ import { setUser } from '../../features/user/userSlice';
 import { AiFillGoogleCircle } from 'react-icons/ai';
 import Login from './Login';
 import Register from './Register';
+import { Flex } from '../../UI';
 
 const Auth: React.FC = () => {
   const [authType, setAuthType] = useState<'login' | 'register'>('login');
@@ -49,7 +50,7 @@ const Auth: React.FC = () => {
   };
 
   return (
-    <div>
+    <Flex p={20} direction="column" gap={5}>
       {authType === 'login' ? <Login /> : <Register />}
 
       <br />
@@ -57,7 +58,6 @@ const Auth: React.FC = () => {
         Change to {authType === 'login' ? 'Register' : 'Login'}
       </button>
 
-      <br />
       <br />
       <hr />
       <br />
@@ -72,7 +72,7 @@ const Auth: React.FC = () => {
       >
         <AiFillGoogleCircle size={24} /> Continue
       </button>
-    </div>
+    </Flex>
   );
 };
 

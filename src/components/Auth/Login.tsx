@@ -1,6 +1,7 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { auth } from '../../firebase';
+import { Input } from '../../UI';
 
 interface FormData {
   email: string;
@@ -40,16 +41,24 @@ const Login: React.FC = () => {
     <div>
       <h2>Login</h2>
 
-      <form onSubmit={onSubmit}>
-        <input
+      <form
+        onSubmit={onSubmit}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
+        }}
+      >
+        <Input
           placeholder="Enter email address..."
           type="email"
           name="email"
           value={email}
           onChange={onChange}
           required
+          autoComplete="off"
         />
-        <input
+        <Input
           placeholder="Enter password..."
           type="password"
           name="password"
