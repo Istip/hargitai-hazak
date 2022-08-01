@@ -4,10 +4,7 @@ import { ColorTypes } from '../types/ColorTypes';
 import { JustifyContent } from '../types/JustifyContent';
 import { colors } from './tokens';
 
-interface Props
-  extends React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement>> {
-  children: React.ReactNode;
-
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
   w?: number | string;
   h?: number | string;
   alignItems?: AlignItems;
