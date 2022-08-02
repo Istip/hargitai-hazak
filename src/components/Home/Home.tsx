@@ -20,9 +20,11 @@ const Home: React.FC = () => {
 
   if (isError) {
     return (
-      <div>
-        <h3>Sorry, something went wrong!</h3>
-      </div>
+      <Box p={30}>
+        <Text as="h3" size="h3" fontWeight="black" color="error" center>
+          Sorry, something went wrong!
+        </Text>
+      </Box>
     );
   }
 

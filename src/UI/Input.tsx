@@ -21,8 +21,8 @@ const InputField = styled.input<Props>`
   color: ${colors.white};
 
   &::placeholder {
-    color: ${colors.primary600};
-    opacity: 0.75;
+    color: ${colors.primary300};
+    opacity: 0.5;
   }
 
   &:focus {
