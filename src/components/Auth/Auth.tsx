@@ -49,7 +49,7 @@ const Auth: React.FC = () => {
   };
 
   return (
-    <Box bg="primary900" h="100vh">
+    <Box bg="primary900">
       <Flex p={20} direction="column" gap={5}>
         {authType === 'login' ? (
           <>

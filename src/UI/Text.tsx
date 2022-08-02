@@ -68,7 +68,7 @@ const Text = <E extends React.ElementType = 'div'>({
     text-align: ${center && 'center'};
     font-size: ${handleFontSize(size || 'md')};
     font-weight: ${handleFontWeight(fontWeight || 'normal')};
-    color: ${colors[color || 'black']};
+    color: ${colors[color || 'primary100']};
     letter-spacing: -0.5px;
   `;
 

@@ -7,6 +7,10 @@
   letter-spacing: -0.5px;
 }
 
+body {
+  background: #09181c;
+}
+
 a {
   all: unset;
   text-decoration: none;

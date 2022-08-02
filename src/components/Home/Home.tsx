@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getHouses } from '../../features/houses/houseSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { Text } from '../../UI';
+import { Box, Text } from '../../UI';
+import { HomeList } from './Home.styles';
 import HouseCard from './HouseCard';
 
 const Home: React.FC = () => {
@@ -10,6 +11,7 @@ const Home: React.FC = () => {
   const { houses, isLoading, isError } = useAppSelector(
     (state) => state.houses
   );
+  const { user } = useAppSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getHouses());
@@ -25,27 +27,33 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div>
-      <Text as="h2" size="h2" fontWeight="bold" center>
-        Houses
-      </Text>
+    <Box bg="primary900" m="10px 0">
+      <Box m="0 0 10px 0">
+        <Text as="h2" size="h2" color="primary" fontWeight="bold" center>
+          Houses
+        </Text>
+      </Box>
 
       {isLoading ? (
-        <div>
-          <h3>Loading...</h3>
-        </div>
+        <Box p={30}>
+          <Text as="h3" size="h3" fontWeight="black" color="primary" center>
+            Loading...
+          </Text>
+        </Box>
       ) : (
-        <ul>
+        <HomeList>
           {houses.map((house) => (
             <HouseCard key={house.id} house={house} />
           ))}
-        </ul>
+        </HomeList>
       )}
 
-      <Text center>
-        <Link to="/profile">GO TO PROFILE »</Link>
-      </Text>
-    </div>
+      {user && (
+        <Text center color="primary">
+          <Link to="/profile">GO TO PROFILE »</Link>
+        </Text>
+      )}
+    </Box>
   );
 };
 
