@@ -14,7 +14,7 @@ export const colors = {
   primary600: '#358aa4',
   primary700: '#225a6b',
   primary800: '#102931',
-  primary900: '#060f12',
+  primary900: '#09181c',
 
   gray_light: '#f5f6f6',
   gray_muted: '#bcc1c3',

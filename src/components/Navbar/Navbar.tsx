@@ -2,7 +2,7 @@ import { signOut } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase';
 import { useAppSelector } from '../../hooks/reduxHooks';
-import { Box, Flex, Text } from '../../UI/';
+import { Box, Button, Flex, Text } from '../../UI/';
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
@@ -22,23 +22,24 @@ const Navbar: React.FC = () => {
       p="10px 20px"
       justifyContent="space-between"
       alignItems="center"
-      bg="primary200"
-      borderColor="primary300"
+      bg="primary800"
     >
       <Link to="/">
         <Text as="h3" fontWeight="black" color="primary500">
-          LOGO
+          Hargitai Hazak
         </Text>
       </Link>
 
       <Box>
         {user ? (
-          <button onClick={handleLogout}>LOGOUT</button>
+          <Button variant="primary" size="small" onClick={handleLogout}>
+            LOGOUT
+          </Button>
         ) : (
           <Link to="/auth">
-            <Text color="primary900" fontWeight="bold">
-              Login
-            </Text>
+            <Button variant="primary" size="small">
+              LOGIN
+            </Button>
           </Link>
         )}
       </Box>

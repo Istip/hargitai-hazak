@@ -63,10 +63,6 @@ const Register: React.FC = () => {
 
   return (
     <Box>
-      <Text as="h2" size="h2" fontWeight="bold" center>
-        Login
-      </Text>
-
       <form
         onSubmit={onSubmit}
         style={{
@@ -76,7 +72,11 @@ const Register: React.FC = () => {
           marginTop: '10px',
         }}
       >
+        <Text as="label" size="sm" htmlFor="login-name" color="primary600">
+          Name:
+        </Text>
         <Input
+          id="login-name"
           placeholder="Enter your name..."
           type="text"
           name="name"
@@ -84,7 +84,12 @@ const Register: React.FC = () => {
           onChange={onChange}
           required
         />
+
+        <Text as="label" size="sm" htmlFor="login-email" color="primary600">
+          Email:
+        </Text>
         <Input
+          id="login-email"
           placeholder="Enter email address..."
           type="email"
           name="email"
@@ -92,7 +97,12 @@ const Register: React.FC = () => {
           onChange={onChange}
           required
         />
+
+        <Text as="label" size="sm" htmlFor="login-password" color="primary600">
+          Password:
+        </Text>
         <Input
+          id="login-password"
           placeholder="Enter password..."
           type="password"
           name="password"
@@ -100,7 +110,17 @@ const Register: React.FC = () => {
           onChange={onChange}
           required
         />
+
+        <Text
+          as="label"
+          size="sm"
+          htmlFor="login-passwordConfirm"
+          color="primary600"
+        >
+          Confirm password:
+        </Text>
         <Input
+          id="login-passwordConfirm"
           placeholder="Confirm password..."
           type="password"
           name="passwordConfirm"
@@ -108,6 +128,9 @@ const Register: React.FC = () => {
           onChange={onChange}
           required
         />
+
+        <Box h={2} />
+
         <Button
           size="medium"
           w="100%"

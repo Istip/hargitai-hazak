@@ -61,7 +61,7 @@ const ButtonContent = styled.button<Props>`
       : size === 'large'
       ? '30px 20px'
       : '10px 20px'};
-  background: ${({ bg }) => (bg ? colors[bg] : 'transparent')};
+  background: ${({ bg }) => (bg ? colors[bg] : colors['primary100'])};
   border: 1px solid;
   cursor: pointer;
   font-weight: 700;
@@ -84,20 +84,17 @@ const ButtonContent = styled.button<Props>`
   }
 
   &.secondary {
-    background: ${colors.primary100};
-    border-color: ${colors.primary};
-    color: ${colors.primary};
+    background: ${colors.gray_medium};
+    border-color: ${colors.gray_light};
+    color: ${colors.primary100};
 
     &:hover {
-      background: ${colors.primary200};
-      color: ${colors.primary500};
-      border-color: ${colors.primary400};
+      background: ${colors.gray_dark};
+      color: ${colors.primary100};
     }
 
     &:active {
-      background: ${colors.primary400};
-      border-color: ${colors.primary400};
-      color: ${colors.primary100};
+      background: ${colors.gray_medium};
     }
   }
 

@@ -49,42 +49,57 @@ const Auth: React.FC = () => {
   };
 
   return (
-    <Flex p={20} direction="column" gap={5}>
-      {authType === 'login' ? <Login /> : <Register />}
+    <Box bg="primary900" h="100vh">
+      <Flex p={20} direction="column" gap={5}>
+        {authType === 'login' ? (
+          <>
+            <Text as="h2" color="primary" size="h2" fontWeight="bold" center>
+              Login
+            </Text>
+            <Login />
+          </>
+        ) : (
+          <>
+            <Text as="h2" color="primary" size="h2" fontWeight="bold" center>
+              Register
+            </Text>
+            <Register />
+          </>
+        )}
 
-      <Flex m="5px 0 0">
-        <Box h={1} bg="primary200" m={'10px 20px'} w="100%" />
-        <Box>
-          <Text size="sm" color="primary400">
-            OR
-          </Text>
+        <Flex m="20px 0 0">
+          <Box h={1} bg="primary300" m={'10px 20px'} w="100%" />
+          <Box>
+            <Text size="sm" color="primary300">
+              OR
+            </Text>
+          </Box>
+          <Box h={1} bg="primary300" m={'10px 20px'} w="100%" />
+        </Flex>
+
+        <Box m="20px 0 0 0">
+          <Button
+            onClick={handleGoogleAuth}
+            justifyContent="center"
+            icon={<AiFillGoogleCircle size={16} />}
+            w="100%"
+          >
+            Authenticate with Google
+          </Button>
         </Box>
-        <Box h={1} bg="primary200" m={'10px 20px'} w="100%" />
+
+        <Box>
+          <Button
+            onClick={onChange}
+            variant="secondary"
+            justifyContent="center"
+            w="100%"
+          >
+            Switch to {authType === 'login' ? 'Registration' : 'Login'}
+          </Button>
+        </Box>
       </Flex>
-
-      <Box m="10px 0">
-        <Button
-          onClick={handleGoogleAuth}
-          // variant="primary"
-          justifyContent="center"
-          icon={<AiFillGoogleCircle size={16} />}
-          w="100%"
-        >
-          Authenticate with Google
-        </Button>
-      </Box>
-
-      <Box>
-        <Button
-          onClick={onChange}
-          variant="secondary"
-          justifyContent="center"
-          w="100%"
-        >
-          Change to {authType === 'login' ? 'Register' : 'Login'}
-        </Button>
-      </Box>
-    </Flex>
+    </Box>
   );
 };
 

@@ -14,10 +14,16 @@ export default Input;
 
 const InputField = styled.input<Props>`
   padding: 12px 18px;
-  border: 1px solid ${colors.primary200};
-  background: ${colors.white};
+  border: 1px solid ${colors.primary700};
+  background: ${colors.primary800};
   width: 100%;
   outline: 0;
+  color: ${colors.white};
+
+  &::placeholder {
+    color: ${colors.primary600};
+    opacity: 0.75;
+  }
 
   &:focus {
     border: 1px solid ${colors.primary400};
